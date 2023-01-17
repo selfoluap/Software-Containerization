@@ -1,0 +1,20 @@
+for backend development
+pip install virtualenv
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+for frontend development
+npm install
+npm run
+
+
+backend building for kubernetes
+sudo docker build . -t backend:v1
+sudo docker tag backend:v1 localhost:32001/backend:v1
+sudo docker push localhost:32000/backend:v1
+sudo microk8s kubectl apply -f backend-deployment.yaml
+sudo microk8s kubectl apply -f backend-service.yaml
+
+
+frontend building for kubernetes
