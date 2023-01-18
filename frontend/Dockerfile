@@ -1,11 +1,3 @@
-FROM node:17-alpine
+FROM nginx:stable-alpine
 
-WORKDIR /app
-
-COPY frontend/package*.json ./
-
-RUN npm install
-
-COPY . .
-
-CMD ["npm", "start"]
+COPY build/ /usr/share/nginx/html 
