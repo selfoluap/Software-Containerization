@@ -7,3 +7,4 @@ metadata:
 data: 
   POSTGRES_DB: postgresdb 
   POSTGRES_USER: postgresadmin 
+

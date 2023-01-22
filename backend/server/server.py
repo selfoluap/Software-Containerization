@@ -10,7 +10,7 @@ def init():
     return "<p>Good morning beatiful. It is time to get things done hehe </p>"
 
 @app.route("/db/tasks/day", methods=['GET'])
-def print_tasks_day:
+def print_tasks_day():
     return jsonify({'tasks': get_day_tasks()})
 
 @app.route("/db/tasks/week", methods=['GET'])
