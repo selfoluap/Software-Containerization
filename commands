@@ -28,6 +28,14 @@ sudo docker push localhost:32000/frontend:v1
 sudo microk8s kubectl apply -f frontend-deployment.yaml
 sudo microk8s kubectl apply -f frontend-service.yaml
 
+building database
+sudo microk8s apply -f postgres-config.yaml
+sudo microk8s apply -f postgres-secret.yaml
+sudo mkdir -p /opt/postgre/data
+sudo microk8s kubectl apply -f postgres-storage.yaml 
+sudo microk8s kubectl apply -f postgres-deployment.yaml
+sudo microk8s kubectl apply -f postgres-service.yaml
+psql -h localhost -U postgresadmin --password -p 30001 postgresdb
 
 ingress
 sudo microk8s kubectl apply -f ingress.yaml
