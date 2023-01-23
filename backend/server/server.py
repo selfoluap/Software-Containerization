@@ -19,7 +19,7 @@ def print_tasks_week():
 
 @app.route("/db/task/create", methods=['POST'])
 def create_task():
-    input = request.get_json() #get input for the task
+    input = request.get_json() #get input for the task..
     taskID = input['taskID']
     taskDate = input['taskDate']
     startingTime = input['timeStart']
