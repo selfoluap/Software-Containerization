@@ -5,7 +5,7 @@ function App() {
   const [data, setData] = useState([]);
 
   const fetchData = () => {
-    return fetch("http://127.0.0.1:5000/api/v1.0/todos")
+    return fetch("/api/v1.0/todos")
     .then((response) => 
       response.json())
     .then((data) => setData(data["todos"]))
@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <h1>ToDo's</h1>
+      <h1>ToDo's v4</h1>
       <ul>
         {data && data.length > 0 && data.map((dataObj, index) => (
             <li key={dataObj.id}>{dataObj.desc} written by {dataObj.author}</li>
