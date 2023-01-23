@@ -9,3 +9,9 @@ docker build -t frontend .
 
 docker run -p 3001:3000 dev:frontend
 -> runs docker and exposes port 3000 to other docker containers and 3001 to host
+
+
+other commands:
+- to download react icons use: 
+      -> cd frontend
+      -> npm install react-icons
