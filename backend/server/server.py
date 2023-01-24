@@ -1,8 +1,19 @@
 #!flask/bin/python
-import Flask
+import flask
+import psycopg2
+import sqlalchemy
 from db import print_tasks_day, print_tasks_week, update_task, remove_task, create_task
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/'
+
+# conn = psycopg2.connect(
+#     database = "",
+#     user="",
+#     password="",
+#     host="0.0.0.0"
+# )
 
 
 @app.route("/")
