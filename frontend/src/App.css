@@ -17,7 +17,7 @@ body {
 
 /* column with todos and form to add todo */
 .todo-app {
-  display: flex;
+  display: flex; 
   flex-direction: column;
   justify-content: start;
   width: 520px;
@@ -36,21 +36,20 @@ h1 {
   font-size: 24px;
 }
 
-/* completed todo */
-.complete {
-  text-decoration: line-through;
-  opacity: 0.4;
+input {
+  display: block;
+  margin: 10px auto;
 }
 
-/* space between form and todos */
-.todo-form {
-  margin-bottom: 32px;
+textarea{
+  display: block;
+  margin: 10px auto;
 }
 
-/* todo input add form */
-.todo-input {
+/* todo title input */
+.add-todo-title {
   padding: 14px 32px 14px 16px;
-  border-radius: 4px 0 0 4px;
+  border-radius: 4px 4px 4px 4px;
   border: 2px solid #5d0cff;
   outline: none;
   width: 320px;
@@ -58,16 +57,53 @@ h1 {
   color: #fff;
 }
 
-/* color of placeholder text in add form */
-.todo-input::placeholder {
+/* todo description input */
+.add-todo-body {
+  padding: 14px 32px 14px 16px;
+  border-radius: 4px 4px 4px 4px;
+  border: 2px solid #5d0cff;
+  outline: none;
+  width: 320px;
+  background: transparent;
+  color: #fff;
+}
+
+/* placeholders for inputs */
+.add-todo-title::placeholder {
   color: #e2e2e2;
 }
 
-/* button in add form */
-.todo-button {
+.add-todo-body::placeholder {
+  color: #e2e2e2;
+}
+
+/* add button */
+.add-btn {
   padding: 16px;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px 4px 4px 4px;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 12, 241, 1) 0%,
+    rgba(250, 0, 135, 1) 100%
+  );
+  color: #fff;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  width: 29%;
+  font-size: 15.5px;
+}
+
+/* delete button */
+.delete-btn {
+  padding: 16px;
+  margin-top: 15px;
+  margin-left: 100px;
+  margin-right: 100px;
+  border: none;
+  border-radius: 4px 4px 4px 4px;
   cursor: pointer;
   outline: none;
   background: linear-gradient(
@@ -79,47 +115,30 @@ h1 {
   text-transform: capitalize;
 }
 
-/* color of edit form */
-.todo-input.edit {
-  border: 2px solid #149fff;
-}
-
-/* button in edit form */
-.todo-button.edit {
-  background: linear-gradient(
-    90deg,
-    rgba(20, 159, 255, 1) 0%,
-    rgba(17, 122, 255, 1) 100%
-  );
-  padding: 16px 22px;
-}
-
-.todo-container {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-
-/* adjustment of each row of todos list */
-.todo-row {
-  display: flex;
+/* adjustment of each todo (row)*/
+.todo {
+  /* display: flex; */
   justify-content: space-between;
   align-items: center;
-  margin: 4px auto;
-  color: #fff;
+  margin: 15px auto;
+  color: #fff; 
   background: linear-gradient(
     90deg,
     rgba(255, 118, 20, 1) 0%,
     rgba(255, 84, 17, 1) 100%
   );
 
-  padding: 16px;
+  padding: 20px;
   border-radius: 5px;
-  width: 90%;
+  width: 75%;
+}
+
+.todo-body{
+  margin-bottom: 30px;
 }
 
 /* adjustment of delete and edit icons */
-.icons {
+/* .icons {
   display: flex;
   align-items: center;
   font-size: 24px;
@@ -133,4 +152,4 @@ h1 {
 
 .edit-icon {
   color: #fff;
-}
+} */
