@@ -19,7 +19,7 @@ todos = [
     } 
 ] 
  
-@app.route('/api/v1.0/todos', methods=['GET'])
+@app.route('/', methods=['GET'])
 @cross_origin()
 def get_todos(): 
     return jsonify({'todos': todos}) 

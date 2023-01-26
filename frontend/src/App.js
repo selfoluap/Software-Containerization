@@ -5,7 +5,7 @@ function App() {
   const [data, setData] = useState([]);
 
   const fetchData = () => {
-    return fetch("/api/v1.0/todos")
+    return fetch("testtodos.com/test")
     .then((response) => 
       response.json())
     .then((data) => setData(data["todos"]))

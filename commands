@@ -1,30 +1,19 @@
 start docker
 sudo systemctl start docker
 
-for backend development
-pip install virtualenv
-virtualenv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-for frontend development
-npm install
-npm run
-
-
 backend building for kubernetes
-sudo docker build . -t backend:versionNumber
-sudo docker tag backend:versionNumber localhost:32000/backend:versionNumber
-sudo docker push localhost:32000/backend:versionNumber
+sudo docker build . -t backend:v11
+sudo docker tag backend:v11 localhost:32000/backend:v11
+sudo docker push localhost:32000/backend:v11
 sudo microk8s kubectl apply -f backend-deployment.yaml
 sudo microk8s kubectl apply -f backend-service.yaml
 
 
 frontend building for kubernetes
-sudo docker build . -t frontend:versionNumber
-sudo docker tag frontend:versionNumber localhost:32000/frontend:versionNumber
-sudo docker push localhost:32000/frontend:versionNumber
-sudo microk8s kubectl apply -f frontend-deployment.yaml --dont forget to change the image in the deployment.yaml
+sudo docker build . -t frontend:v7
+sudo docker tag frontend:v7 localhost:32000/frontend:v7
+sudo docker push localhost:32000/frontend:v7
+sudo microk8s kubectl apply -f frontend-deployment.yaml
 sudo microk8s kubectl apply -f frontend-service.yaml
 
 building database
