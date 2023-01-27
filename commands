@@ -2,17 +2,17 @@ start docker
 sudo systemctl start docker
 
 backend building for kubernetes
-sudo docker build . -t backend:v11
-sudo docker tag backend:v11 localhost:32000/backend:v11
-sudo docker push localhost:32000/backend:v11
+sudo docker build . -t backend:v5
+sudo docker tag backend:v5 localhost:32000/backend:v5
+sudo docker push localhost:32000/backend:v5
 sudo microk8s kubectl apply -f backend-deployment.yaml
 sudo microk8s kubectl apply -f backend-service.yaml
 
 
 frontend building for kubernetes
-sudo docker build . -t frontend:v7
-sudo docker tag frontend:v7 localhost:32000/frontend:v7
-sudo docker push localhost:32000/frontend:v7
+sudo docker build . -t frontend:v1
+sudo docker tag frontend:v1 localhost:32000/frontend:v1
+sudo docker push localhost:32000/frontend:v1
 sudo microk8s kubectl apply -f frontend-deployment.yaml
 sudo microk8s kubectl apply -f frontend-service.yaml
 

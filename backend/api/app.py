@@ -3,8 +3,8 @@ from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
  
 app = Flask(__name__)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+#cors = CORS(app)
+#app.config['CORS_HEADERS'] = 'Content-Type'
  
 todos = [ 
     { 
@@ -18,9 +18,17 @@ todos = [
         'author': u'German',  
     } 
 ] 
- 
+
+
 @app.route('/', methods=['GET'])
-@cross_origin()
+def get_home(): 
+    return "Todos App"
+ 
+@app.route('/server/get_task', methods=['GET'])
+def get_todo(): 
+    return jsonify({'todo': todos[0]})
+
+@app.route('/server/get_tasks', methods=['GET'])
 def get_todos(): 
     return jsonify({'todos': todos}) 
  

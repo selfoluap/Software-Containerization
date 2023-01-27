@@ -16,6 +16,6 @@ spec:
     spec: 
       containers: 
       - name: frontend-container 
-        image: localhost:32000/frontend:v7
+        image: localhost:32000/frontend:v1
         ports: 
         - containerPort: 80

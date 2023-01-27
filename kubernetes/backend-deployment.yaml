@@ -1,7 +1,7 @@
 apiVersion: apps/v1 
 kind: Deployment 
 metadata: 
-  name: backend-deployment 
+  name: backend-deployment
   labels: 
     app: backend 
 spec: 
@@ -16,6 +16,6 @@ spec:
     spec: 
       containers: 
       - name: backend-container 
-        image: localhost:32000/backend:v11
+        image: localhost:32000/backend:v5
         ports: 
         - containerPort: 5000
