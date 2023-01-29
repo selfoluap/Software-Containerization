@@ -1,8 +1,8 @@
 import os
 import sqlalchemy
-from dotenv import load_dotenv, find_dotenv
+# from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv())
+# load_dotenv(find_dotenv())
 
 engine = sqlalchemy.create_engine(os.environ.get('DB_URL'))
 metadata = sqlalchemy.MetaData()

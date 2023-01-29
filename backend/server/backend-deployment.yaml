@@ -5,7 +5,7 @@ metadata:
   labels: 
     app: server
 spec: 
-  replicas: 3 
+  replicas: 2 
   selector: 
     matchLabels: 
       app: server
@@ -16,6 +16,17 @@ spec:
     spec: 
       containers: 
       - name: server-container 
-        image: localhost:32000/tasksapp:v1
+        image: localhost:32000/tasksapp:v2
         ports: 
         - containerPort: 5000
+        envFrom:
+          - configMapRef:
+              name: postgres-config
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_PASSWORD
+          - name: DB_URL
+            value: postgresql://postgresadmin:admin123@postgres-service.default.svc.cluster.local:5432/postgresdb

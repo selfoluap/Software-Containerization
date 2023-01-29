@@ -31,7 +31,7 @@ app = Flask(__name__)
 #
 @app.route("/")
 def initialize():
-    return init();
+    return init()
 
 # @app.route('/', methods=['POST'])
 # def my_form_post():
