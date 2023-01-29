@@ -3,7 +3,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
  
 app = Flask(__name__)
-cors = CORS(app)
+cors = CORS(app, origins="*")
 app.config['CORS_HEADERS'] = 'Content-Type'
  
 todos = [ 

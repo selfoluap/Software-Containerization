@@ -16,6 +16,6 @@ spec:
     spec: 
       containers: 
       - name: backend-container 
-        image: localhost:32000/backend:v6
+        image: localhost:32000/backend:v7
         ports: 
         - containerPort: 5000

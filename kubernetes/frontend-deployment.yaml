@@ -16,6 +16,6 @@ spec:
     spec: 
       containers: 
       - name: frontend-container 
-        image: localhost:32000/frontend:v3
+        image: localhost:32000/frontend:v5
         ports: 
         - containerPort: 80

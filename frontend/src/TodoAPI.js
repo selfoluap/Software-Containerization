@@ -10,11 +10,11 @@ function TodoAPI() {
 
   //GET METHOD
   useEffect(() => {
-     fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
+     fetch('http://api.backend.com/server/get_tasks')
         .then((response) => response.json())
         .then((data) => {
            console.log(data);
-           setTodos(data);
+           setTodos(data["todos"]);
         })
         .catch((err) => {
            console.log(err.message);
@@ -87,8 +87,8 @@ function TodoAPI() {
          {todos.map((todo) => {
             return (
                <div className="todo" key={todo.id}>
-                  <h1 className="todo-title">{todo.title}</h1>
-                  <p className="todo-body">{todo.body}</p>
+                  <h1 className="todo-title">{todo.author}</h1>
+                  <p className="todo-body">{todo.desc}</p>
                   <div className="delete-todo-container">
                      <div className="delete-btn" onClick={() => deleteTodo(todo.id)}>Delete todo</div>
                   </div>
