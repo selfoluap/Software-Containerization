@@ -1,0 +1,21 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: backend-deployment
+  labels: 
+    app: backend 
+spec: 
+  replicas: 3 
+  selector: 
+    matchLabels: 
+      app: backend
+  template: 
+    metadata: 
+      labels: 
+        app: backend 
+    spec: 
+      containers: 
+      - name: backend-container 
+        image: localhost:32000/backend:v6
+        ports: 
+        - containerPort: 5000
