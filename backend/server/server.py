@@ -32,7 +32,7 @@ def get_todos():
 
 @app.route("/server/todos", methods=['POST'])
 @cross_origin()
-def create_todo_server():
+def create_todo():
     body = request.get_json()
     db.session.add(Todo(body['title'], body['description']))
     db.session.commit()
@@ -41,7 +41,7 @@ def create_todo_server():
     
 @app.route("/server/todos/<id>", methods=['DELETE'])
 @cross_origin()
-def remove_todo_server(id):
+def delete_todo(id):
     db.session.query(Todo).filter_by(id=id).delete()
     db.session.commit()
     return "todo successfully deleted"
