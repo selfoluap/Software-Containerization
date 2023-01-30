@@ -58,7 +58,7 @@ textarea{
 }
 
 /* todo description input */
-.add-todo-body {
+.add-todo-description {
   padding: 14px 32px 14px 16px;
   border-radius: 4px 4px 4px 4px;
   border: 2px solid #5d0cff;
@@ -73,7 +73,7 @@ textarea{
   color: #e2e2e2;
 }
 
-.add-todo-body::placeholder {
+.add-todo-description::placeholder {
   color: #e2e2e2;
 }
 
@@ -133,7 +133,7 @@ textarea{
   width: 75%;
 }
 
-.todo-body{
+.todo-description{
   margin-bottom: 30px;
 }
 

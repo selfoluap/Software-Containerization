@@ -5,12 +5,12 @@ function TodoAPI() {
   
   const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [description, setDescription] = useState('');
 
 
   //GET METHOD
   useEffect(() => {
-     fetch('http://api.backend.com/server/get_tasks')
+     fetch('http://api.backend.com/server/get_tasks') // /server/todos
         .then((response) => response.json())
         .then((data) => {
            console.log(data);
@@ -22,13 +22,13 @@ function TodoAPI() {
   }, []);
 
     //POST METHOD
-    const addTodos = async (title, body) => {
-       await fetch('https://jsonplaceholder.typicode.com/posts', {
+    const addTodos = async (title, description) => {
+       await fetch('/server/todos', {
           method: 'POST',
           body: JSON.stringify({
              //id: Math.random().toString(36).slice(2), ***ID???***
              title: title,
-             body: body
+             description: description
           }),
           headers: {
              'Content-type': 'application/json; charset=UTF-8',
@@ -38,7 +38,7 @@ function TodoAPI() {
           .then((data) => {
              setTodos((todos) => [data, ...todos]);
              setTitle('');
-             setBody('');
+             setDescription('');
           })
           .catch((err) => {
              console.log(err.message);
@@ -47,12 +47,12 @@ function TodoAPI() {
     
     const handleSubmit = (e) => {
        e.preventDefault();
-       addTodos(title, body);
+       addTodos(title, description);
     };    
 
     //DELETE METHOD
     const deleteTodo = async (id) => {
-      await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+      await fetch(`/server/todos/${id}`, {
          method: 'DELETE',
       }).then((response) => {
          if (response.status === 200) {
@@ -76,8 +76,8 @@ function TodoAPI() {
                    onChange={(e) => setTitle(e.target.value)}
                 />
                 
-                <textarea name="" className="add-todo-body" placeholder="Add description" id="" cols="10" rows="8" 
-                   value={body} onChange={(e) => setBody(e.target.value)} 
+                <textarea name="" className="add-todo-description" placeholder="Add description" id="" cols="10" rows="8" 
+                   value={description} onChange={(e) => setDescription(e.target.value)} 
                 ></textarea>
                 <button className="add-btn" type="submit">Add todo</button>
              </form>
@@ -87,8 +87,8 @@ function TodoAPI() {
          {todos.map((todo) => {
             return (
                <div className="todo" key={todo.id}>
-                  <h1 className="todo-title">{todo.author}</h1>
-                  <p className="todo-body">{todo.desc}</p>
+                  <h1 className="todo-title">{todo.title}</h1> 
+                  <p className="todo-description">{todo.description}</p>
                   <div className="delete-todo-container">
                      <div className="delete-btn" onClick={() => deleteTodo(todo.id)}>Delete todo</div>
                   </div>
