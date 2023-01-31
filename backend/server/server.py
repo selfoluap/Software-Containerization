@@ -30,6 +30,13 @@ with app.app_context():
     db.create_all()
 
 
+@app.route('/', methods=['GET'])
+@cross_origin()
+def default():
+    return "API for Todos"
+
+
+
 @app.route('/server/get_todos', methods=['GET'])
 @cross_origin()
 def get_todos():
