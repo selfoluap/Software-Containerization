@@ -1,21 +1,32 @@
 apiVersion: apps/v1 
 kind: Deployment 
 metadata: 
-  name: backend-deployment
+  name: server-deployment 
   labels: 
-    app: backend 
+    app: server
 spec: 
-  replicas: 3 
+  replicas: 3
   selector: 
     matchLabels: 
-      app: backend
+      app: server
   template: 
     metadata: 
       labels: 
-        app: backend 
+        app: server 
     spec: 
       containers: 
-      - name: backend-container 
-        image: localhost:32000/backend:v7
+      - name: server-container 
+        image: eu.gcr.io/diesel-dominion-375713/server:latest
         ports: 
         - containerPort: 5000
+        envFrom:
+          - configMapRef:
+              name: postgres-config
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_PASSWORD
+          - name: DB_URL
+            value: postgresql://postgresadmin:admin123@postgres-service.default.svc.cluster.local:5432/postgresdb

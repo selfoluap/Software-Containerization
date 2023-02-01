@@ -37,3 +37,7 @@ sudo docker build . -t frontend:v5
 sudo docker tag frontend:v5 localhost:32000/frontend:v5
 sudo docker push localhost:32000/frontend:v5
 sudo microk8s kubectl set image deployments/frontend-deployment frontend-container=localhost:32000/frontend:3
+
+docker tag frontend:v2 gcr.io/diesel-dominion-375713/frontend:v2
+docker push gcr.io/diesel-dominion-375713/frontend:v3
+kubectl set image deployments/frontend-deployment frontend-container=gcr.io/diesel-dominion-375713/frontend:v3
