@@ -1,11 +1,10 @@
 # Software-Containerization
 App for WS2022 Course Software Containerization at VU
 
-cd frontend
-npm install 
+docker build --file=frontend/Dockerfile  -t frontend .
+docker build --file=backend/Dockerfile  -t backend .
+-> creates docker images
 
-docker build -t frontend .
--> creates docker image
-
-docker run -p 3001:3000 dev:frontend
--> runs docker and exposes port 3000 to other docker containers and 3001 to host
+docker compose up -d db
+docker compose up backend
+docker compose up frontend
