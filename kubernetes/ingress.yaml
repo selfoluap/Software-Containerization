@@ -7,11 +7,13 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/add-base-url: "true"
+    cert-manager.io/issuer: ca-issuer
+    cert-manager.io/common-name: 34.88.64.66.nip.io
 spec:
   tls:
     - hosts:
         - "34.88.64.66.nip.io"
-      secretName: ingress-tls-secret
+      secretName: todo-secret
   rules:
   - host: "34.88.64.66.nip.io"
     http:
