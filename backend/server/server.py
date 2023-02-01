@@ -45,7 +45,8 @@ def get_todos():
     for todo in query_result:
         todos.append({
             "title": todo.title,
-            "description": todo.description
+            "description": todo.description,
+            "id": todo.id
         })
     return jsonify(todos)
 
@@ -67,7 +68,7 @@ def create_todo_server():
 def remove_todo_server(id):
     db.session.query(Todo).filter_by(id=id).delete()
     db.session.commit()
-    return {"msg": "Todo deleted successfully", 
+    return {"msg": "Todo deleted successfully",
             "status": 200}
  
 if __name__ == '__main__': 
