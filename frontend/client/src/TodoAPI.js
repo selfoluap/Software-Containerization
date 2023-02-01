@@ -10,62 +10,74 @@ function TodoAPI() {
 
   //GET METHOD
   useEffect(() => {
-     fetch('/backend/server/get_todos') // /server/todos
+     fetch('/backend/server/get_todos')
         .then((response) => response.json())
         .then((data) => {
            console.log(data);
-           setTodos(data["todos"]);
+           setTodos(data);
         })
         .catch((err) => {
            console.log(err.message);
         });
   }, []);
 
-    //POST METHOD
-    const addTodos = async (title, description) => {
-       await fetch('/backend/server/create_todo', {
-          method: 'POST',
-          body: JSON.stringify({
-             //id: Math.random().toString(36).slice(2), ***ID???***
-             title: title,
-             description: description
-          }),
-          headers: {
-             'Content-type': 'application/json; charset=UTF-8',
-          },
-       })
-          .then((response) => response.json())
-          .then((data) => {
-             setTodos((todos) => [data, ...todos]);
-             setTitle('');
-             setDescription('');
-          })
-          .catch((err) => {
-             console.log(err.message);
-          });
-    };
 
-    const handleSubmit = (e) => {
-       e.preventDefault();
-       addTodos(title, description);
-    };    
-
-    //DELETE METHOD
-    const deleteTodo = async (id) => {
-      await fetch(`/backend/server/delete_todo/${id}`, {
-         method: 'DELETE',
-      }).then((response) => {
-         if (response.status === 200) {
-            setTodos(
-               todos.filter((todo) => {
-                  return todo.id !== id;
-               })
-            );
-         } else {
-            return;
-         }
+  //POST METHOD
+  const addTodos = async (title, description) => {
+   await fetch('/backend/server/create_todo', {
+      method: 'POST',
+      body: JSON.stringify({
+         //id: Math.random().toString(36).slice(2), ***ID???***
+         title: title,
+         description: description
+      }),
+      headers: {
+         'Content-type': 'application/json; charset=UTF-8',
+      },
+   })
+      .then((response) => response.json())
+      .then((data) => {
+         setTodos((todos) => [data, ...todos]);
+         setTitle('');
+         setDescription('');
+         fetch('/backend/server/get_todos')
+        .then((response) => response.json())
+        .then((data) => {
+           console.log(data);
+           setTodos(data);
+        })
+        .catch((err) => {
+           console.log(err.message);
+        });
+      })
+      .catch((err) => {
+         console.log(err.message);
       });
-      };
+};
+   
+const handleSubmit = (e) => {
+   e.preventDefault();
+   addTodos(title, description);
+}; 
+
+
+//DELETE METHOD
+const deleteTodo = async (id) => {
+   await fetch(`/backend/server/delete_todo/${id}`, {
+      method: 'DELETE',
+   }).then((response) => {
+      if (response.status === 200) {
+         setTodos(
+            todos.filter((todo) => {
+               return todo.id !== id;
+            })
+         );
+      } else {
+         return;
+      }
+   });
+   };
+   
 
   return (
    <div className="todo-container">
@@ -84,11 +96,11 @@ function TodoAPI() {
       </div>
       <hr/>
       <div className="get-todo-container">
-         {todos.map((todo) => {
+         {todos?.map((todo) => {
             return (
-               <div className="todo" key={todo.id}>
-                  <h1 className="todo-title">{todo.title}</h1> 
-                  <p className="todo-description">{todo.description}</p>
+               <div className="todo" key={todo?.id}>
+                  <h1 className="todo-title">{todo?.title}</h1>
+                  <p className="todo-description">{todo?.description}</p>
                   <div className="delete-todo-container">
                      <div className="delete-btn" onClick={() => deleteTodo(todo.id)}>Delete todo</div>
                   </div>
@@ -100,6 +112,5 @@ function TodoAPI() {
 
   );
 }
-
 
 export default TodoAPI;
