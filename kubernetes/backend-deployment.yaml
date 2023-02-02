@@ -16,7 +16,7 @@ spec:
     spec: 
       containers: 
       - name: server-container 
-        image: eu.gcr.io/diesel-dominion-375713/server:latest
+        image: gcr.io/diesel-dominion-375713/backend:v2
         ports: 
         - containerPort: 5000
         envFrom:

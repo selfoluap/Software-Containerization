@@ -39,9 +39,9 @@ sudo docker push localhost:32000/frontend:v5
 sudo microk8s kubectl set image deployments/frontend-deployment frontend-container=localhost:32000/frontend:3
 
 
-docker build . -t gcr.io/diesel-dominion-375713/backend:v1
-docker push gcr.io/diesel-dominion-375713/backend:v1
-kubectl set image deployments/server-deployment server-container=gcr.io/diesel-dominion-375713/backend:v1
+docker build . -t gcr.io/diesel-dominion-375713/backend:v2
+docker push gcr.io/diesel-dominion-375713/backend:v2
+kubectl set image deployments/server-deployment server-container=gcr.io/diesel-dominion-375713/backend:v2
 
 docker build . -t gcr.io/diesel-dominion-375713/frontend:v4
 docker push gcr.io/diesel-dominion-375713/frontend:v4

@@ -9,11 +9,12 @@ metadata:
     nginx.ingress.kubernetes.io/add-base-url: "true"
     cert-manager.io/issuer: ca-issuer
     cert-manager.io/common-name: 34.88.64.66.nip.io
+  namespace: default
 spec:
   tls:
     - hosts:
         - "34.88.64.66.nip.io"
-      secretName: todo-secret
+      secretName: root-secret
   rules:
   - host: "34.88.64.66.nip.io"
     http:

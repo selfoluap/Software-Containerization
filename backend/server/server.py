@@ -36,7 +36,6 @@ def default():
     return "API for Todos"
 
 
-
 @app.route('/server/get_todos', methods=['GET'])
 @cross_origin()
 def get_todos():
@@ -70,7 +69,8 @@ def remove_todo_server(id):
     db.session.commit()
     return {"msg": "Todo deleted successfully",
             "status": 200}
- 
+
+
 if __name__ == '__main__': 
     app.run(debug=True) 
  

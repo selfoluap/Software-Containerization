@@ -1,7 +1,8 @@
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
-  name: my-ca-issuer
+  name: my-ca-issuer-test
+  namespace: default
 spec:
   ca:
     secretName: root-secret
