@@ -9,7 +9,16 @@ load_dotenv(find_dotenv())
 
 db = SQLAlchemy()
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URL')
+
+DB_URL = 'postgres://{}:{}@{}.default.svc.cluster.local:{}/{}'.format{
+    os.environ.get('POSTGRES_USER'),
+    os.environ.get('POSTGRES_PASSWORD'),
+    os.environ.get('POSTGRES_HOST'),
+    os.environ.get('POSTGRES_PORT'),
+    os.environ.get('POSTGRES_DB')
+}
+
+app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 db.init_app(app)
 cors = CORS(app, origins="*")
 app.config['CORS_HEADERS'] = 'Content-Type'
