@@ -53,26 +53,26 @@ openssl req -x509 -sha256 -nodes -newkey rsa:4090 -keyout key.pem -out cert.pem
 You just need to make sure to replace the values in the tls-secret.yaml accordingly with the new values.
 
 
-4. Set up Artifact Registry on GCP
+5. Set up Artifact Registry on GCP
 
-4.1 Create a docker repository
+5.1 Create a docker repository
 
-4.2 Authenticate with an access token
+5.2 Authenticate with an access token
 ```
 gcloud auth print-access-token | sudo microk8s helm3 registry login -u oauth2accesstoken     --password-stdin https://us-central1-docker.pkg.dev
 ```
 You should see a message "Login succeeded"
 
 
-5. Package the helm chart and push it to Artifact Registry
+6. Package the helm chart and push it to Artifact Registry
 ```
 sudo microk8s helm3 package helm
 sudo microk8s helm3 push software-containerization-0.1.0.tgz oci://us-central1-docker.pkg.dev/$YOUR_PROJECT_NAME/$YOUR_ARTIFACT_REPO_NAME
 ```
 
-6. Install helm chart on GKE
+7. Install helm chart on GKE
 
-6.1 Open a terminal on GCP, connect to the correct cluster and type in
+7.1 Open a terminal on GCP, connect to the correct cluster and type in
 ```
 helm install $HELM_CHART oci://us-central1-docker.pkg.dev/$YOUR_PROJECT_NAME/$YOUR_ARTIFACT_REPO_NAME/$HELM_CHART --version 0.1.0
 ```
