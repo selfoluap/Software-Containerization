@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: manager
+  name: {{ .Release.Name }}-manager
 rules:
 - apiGroups: [""]
   resources: ["pods", "services", "replicationcontrollers", "deployments", "statefulsets"]
@@ -11,7 +11,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: developer
+  name: {{ .Release.Name }}-developer
 rules:
 - apiGroups: [""] 
   resources: ["pods", "deployments", "secrets", "services", "statefulsets", "jobs", "nodes", "configmaps", "endpoints"]
@@ -20,7 +20,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: devops-engineer
+  name: {{ .Release.Name }}-devops-engineer
 rules:
 - apiGroups: [""]
   resources: ["pods", "services", "replicationcontrollers", "deployments", "statefulsets", "configmaps", "secrets"]
