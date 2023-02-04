@@ -1,13 +1,10 @@
 replicaCount: 3
-frontendImage: gcr.io/diesel-dominion-375713/frontend:v3
+frontendImage: gcr.io/diesel-dominion-375713/frontend:vp1
 frontendTargetPort: 80
 frontendPort: 8091
-backendImage: gcr.io/diesel-dominion-375713/backend:v2
+backendImage: gcr.io/diesel-dominion-375713/backend:vp1
 backendTargetPort: 5000
 backendPort: 8081
 dbPort: 5432
 dbURL: postgresql://postgresadmin:admin123@postgres-service.default.svc.cluster.local:5432/postgresdb
 hostName: "35.239.106.62.nip.io"
-secret:
-  cert: tls/cert.pem
-  key: tls/key.pem
