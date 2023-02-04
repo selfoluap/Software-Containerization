@@ -8,3 +8,6 @@ backendPort: 8081
 dbPort: 5432
 dbURL: postgresql://postgresadmin:admin123@postgres-service.default.svc.cluster.local:5432/postgresdb
 hostName: "test.com"
+secret:
+  cert: tls/cert.pem
+  key: tls/key.pem
