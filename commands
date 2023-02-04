@@ -1,53 +1,5 @@
-start docker
-sudo systemctl start docker
+sudo microk8s helm3 push software-containerization-0.1.0.tgz oci://us-central1-docker.pkg.dev/diesel-dominion-375713/helm-repo
 
-backend building for kubernetes
-sudo docker build . -t localhost:32000/backend:v7
-sudo docker push localhost:32000/backend:v7
-sudo microk8s kubectl apply -f backend-deployment.yaml
-sudo microk8s kubectl apply -f backend-service.yaml
+gcloud artifacts docker images list us-central1-docker.pkg.dev/diesel-dominion-375713/helm-repo
 
-
-frontend building for kubernetes
-sudo docker build . -t localhost:32000/frontend:v5
-sudo docker push localhost:32000/frontend:v5
-sudo microk8s kubectl apply -f frontend-deployment.yaml
-sudo microk8s kubectl apply -f frontend-service.yaml
-
-building database
-sudo microk8s apply -f postgres-config.yaml
-sudo microk8s apply -f postgres-secret.yaml
-sudo mkdir -p /opt/postgre/data
-sudo microk8s kubectl apply -f postgres-storage.yaml 
-sudo microk8s kubectl apply -f postgres-deployment.yaml
-sudo microk8s kubectl apply -f postgres-service.yaml
-psql -h localhost -U postgresadmin --password -p 30001 postgresdb
-
-ingress
-sudo microk8s kubectl apply -f ingress.yaml
-
-update kubernetes deployment after changing application
-1. sudo docker build . -t frontend:versionNumber
-2. sudo docker tag frontend:versionNumber localhost:32000/frontend:versionNumber
-3. sudo docker push localhost:32000/frontend:versionNumber
-4a. sudo microk8s kubectl set image deployments/frontend-deployment frontend-container=localhost:32000/frontend:versionNumber
-4b. sudo microk8s kubectl set image deployments/backend-deployment backend-container=backend:versionNumber
-
-sudo docker build . -t frontend:v5
-sudo docker tag frontend:v5 localhost:32000/frontend:v5
-sudo docker push localhost:32000/frontend:v5
-sudo microk8s kubectl set image deployments/frontend-deployment frontend-container=localhost:32000/frontend:3
-
-
-docker build . -t gcr.io/diesel-dominion-375713/backend:v2
-docker push gcr.io/diesel-dominion-375713/backend:v2
-kubectl set image deployments/server-deployment server-container=gcr.io/diesel-dominion-375713/backend:v2
-
-docker build . -t gcr.io/diesel-dominion-375713/frontend:v4
-docker push gcr.io/diesel-dominion-375713/frontend:v4
-kubectl set image deployments/frontend-deployment frontend-container=gcr.io/diesel-dominion-375713/frontend:v4
-
-openssl req -x509 -sha256 -nodes -newkey rsa:4090 -keyout key.pem -out cert.pem
-kubectl create secret tls my-tls-secret --cert=cert.pem --key=key.pem
-sudo microk8s disable ingress
-sudo microk8s enable ingress:default-ssl-certificate=default/ingress-tls-secret
+helm install software-containerization oci://us-central1-docker.pkg.dev/diesel-dominion-375713/helm-repo/software-containerization --version 0.1.0
