@@ -24,9 +24,8 @@ app = Flask(__name__)
 #     os.environ.get('POSTGRES_DB')
 # }
 
-DB_URL = 'postgres://postgresadmin:admin123@postgres-service.default.svc.cluster.local:5432/postgresdb'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URL')
 db.init_app(app)
 cors = CORS(app, origins="*")
 app.config['CORS_HEADERS'] = 'Content-Type'
