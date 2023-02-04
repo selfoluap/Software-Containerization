@@ -46,3 +46,8 @@ kubectl set image deployments/server-deployment server-container=gcr.io/diesel-d
 docker build . -t gcr.io/diesel-dominion-375713/frontend:v4
 docker push gcr.io/diesel-dominion-375713/frontend:v4
 kubectl set image deployments/frontend-deployment frontend-container=gcr.io/diesel-dominion-375713/frontend:v4
+
+openssl req -x509 -sha256 -nodes -newkey rsa:4090 -keyout key.pem -out cert.pem
+kubectl create secret tls my-tls-secret --cert=cert.pem --key=key.pem
+sudo microk8s disable ingress
+sudo microk8s enable ingress:default-ssl-certificate=default/ingress-tls-secret

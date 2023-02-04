@@ -1,11 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: db-policy
+  name: {{ .Release.Name }}-db-policy
 spec:
   podSelector:
     matchLabels:
-      app: postgres
+      app: {{ .Release.Name }}-postgres
   policyTypes:
     - Ingress
     - Egress
@@ -13,21 +13,21 @@ spec:
     - from:
       - podSelector:
           matchLabels:
-            app: server
+            app: {{ .Release.Name }}-backend
   egress:
   - to:
     - podSelector:
         matchLabels:
-          app: server
+          app: {{ .Release.Name }}-backend
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: frontend-policy
+  name: {{ .Release.Name }}-frontend-policy
 spec:
   podSelector:
     matchLabels:
-      app: frontend
+      app: {{ .Release.Name }}-frontend
   policyTypes:
   - Ingress
   - Egress

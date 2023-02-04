@@ -1,0 +1,10 @@
+replicaCount: 3
+frontendImage: localhost:32000/frontend:v1
+frontendTargetPort: 80
+frontendPort: 8091
+backendImage: localhost:32000/backend:v1
+backendTargetPort: 5000
+backendPort: 8081
+dbPort: 5432
+dbURL: postgresql://postgresadmin:admin123@postgres-service.default.svc.cluster.local:5432/postgresdb
+hostName: "test.com"
