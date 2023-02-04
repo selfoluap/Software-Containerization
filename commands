@@ -1,9 +1,0 @@
-sudo microk8s helm3 push software-containerization-0.1.0.tgz oci://us-central1-docker.pkg.dev/diesel-dominion-375713/helm-repo
-
-gcloud artifacts docker images list us-central1-docker.pkg.dev/diesel-dominion-375713/helm-repo
-
-helm install software-containerization oci://us-central1-docker.pkg.dev/diesel-dominion-375713/helm-repo/software-containerization --version 0.1.0
-
-helm uninstall software-containerization
-
-kubectl get all -n default <- to verify that the deinstall works
