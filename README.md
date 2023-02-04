@@ -77,6 +77,14 @@ sudo microk8s helm3 push software-containerization-0.1.0.tgz oci://us-central1-d
 helm install $HELM_CHART oci://us-central1-docker.pkg.dev/$YOUR_PROJECT_NAME/$YOUR_ARTIFACT_REPO_NAME/$HELM_CHART --version 0.1.0
 ```
 
+## RBAC Permissions
+
+    Check your permissions by running the example comand (replace get congigmaps with any other resource management comand)
+
+    ```
+    kubectl auth can-i get configmaps --as <gcloud-user-email>
+    ```
+
 
 ## Presentation
 
