@@ -1,0 +1,49 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-reader-binding
+  namespace: default
+subjects:
+
+# Kubernetes service account
+- kind: User
+  name: p.liedtke@student.vu.nl
+
+roleRef:
+  kind: CLusterRole
+  name: developer
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-reader-binding
+  namespace: default
+
+subjects:
+# Kubernetes service account
+  - kind: User
+    name: s.mojzis@student.vu.nl
+
+roleRef:
+  kind: CLusterRole
+  name: devops-engineer
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-reader-binding
+  namespace: default
+subjects:
+# Kubernetes service account
+  - kind: User
+    name: g.savchenko@student.vu.nl
+roleRef:
+  kind: CLusterRole
+  name: manager
+  apiGroup: rbac.authorization.k8s.io
