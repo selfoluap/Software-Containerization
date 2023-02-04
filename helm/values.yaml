@@ -7,3 +7,10 @@ backendTargetPort: 5000
 backendPort: 8081
 dbPort: 5432
 hostName: "35.239.106.62.nip.io"
+roles:
+  managers: 
+    - g.savchenko@student.vu.nl
+  developers:
+    - p.liedtke@student.vu.nl
+  devops-engineers:
+    - s.mojzis@student.vu.nl
