@@ -28,5 +28,3 @@ spec:
               secretKeyRef:
                 name: {{ .Release.Name }}-postgres-secret
                 key: POSTGRES_PASSWORD
-          - name: DB_URL
-            value: {{ .Values.dbURL }}

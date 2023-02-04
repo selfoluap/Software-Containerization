@@ -47,7 +47,7 @@ spec:
   - Egress
   egress:
   - ports:
-    - port: 5432
+    - port: {{ .Values.dbPort }}
       protocol: UDP
-    - port: 5432
+    - port: {{ .Values.dbPort }}
       protocol: TCP
