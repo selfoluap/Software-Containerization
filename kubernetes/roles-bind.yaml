@@ -10,7 +10,7 @@ subjects:
   name: p.liedtke@student.vu.nl
 
 roleRef:
-  kind: CLusterRole
+  kind: ClusterRole
   name: developer
   apiGroup: rbac.authorization.k8s.io
 
@@ -28,7 +28,7 @@ subjects:
     name: s.mojzis@student.vu.nl
 
 roleRef:
-  kind: CLusterRole
+  kind: ClusterRole
   name: devops-engineer
   apiGroup: rbac.authorization.k8s.io
 
@@ -44,6 +44,6 @@ subjects:
   - kind: User
     name: g.savchenko@student.vu.nl
 roleRef:
-  kind: CLusterRole
+  kind: ClusterRole
   name: manager
   apiGroup: rbac.authorization.k8s.io
