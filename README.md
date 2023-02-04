@@ -37,6 +37,8 @@ This IP address will later be used to set the correct hostname in the values.yam
 
 3. Build and push docker images to Container Registry
 
+To be able to push it to Container Registry, your gcloud must be authenticated first. Please refer to https://cloud.google.com/container-registry/docs/advanced-authentication#gcloud-helper for more information.
+
 docker build . -t gcr.io/$YOUR_PROJECT_NAME/backend:v1
 docker push gcr.io/$YOUR_PROJECT_NAME/backend:v1
 
@@ -55,7 +57,7 @@ You just need to make sure to replace the values in the tls-secret.yaml accordin
 4.1 Create a docker repository
 
 4.2 Authenticate with an access token
-    gcloud auth print-access-token | sudo microk8s helm3 registry login -u oauth2accesstoken     --password-stdin https://us-central1-docker.pkg.dev
+    gcloud auth print-access-token | sudo microk8s helm3 registry login -u oauth2accesstoken --password-stdin https://us-central1-docker.pkg.dev
 
     You should see a message "Login succeeded"
 
