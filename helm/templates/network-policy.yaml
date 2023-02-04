@@ -50,7 +50,7 @@ spec:
   - Egress
   egress:
   - ports:
-    - port: 53
+    - port: 5432
       protocol: UDP
-    - port: 53
+    - port: 5432
       protocol: TCP
