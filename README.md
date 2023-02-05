@@ -23,17 +23,7 @@ P3 Project Master Computer Science (VU / UVA)
 
 * `/kubernetes` - Services, deployments, secrets, ingress etc.
 
-* `inventory-app`: Main application. Contains all necessary files and configurations for Docker and Kubernetes as shown in the presentation (except Istio).
-  * `inventory-api`
-    * `api-server`: Holds Flask app and the Dockerfile
-    * `*.yaml`: Kubernetes configuration files (manual deployment)
-  * `inventory-db`:
-    * `*.yaml`: Kubernetes configuration files (manual deployment)
-  * `inventory-ui`:
-    * `ui-client`: Holds the AngularJS UI and the Dockerfile
-    * `*.yaml`: Kubernetes configuration files (manual deployment)
-  * `helm`: Helm chart for the entire application.
-  * `gcloud`: Configuration for Google Cloud Platform.
+
 
 ## Setup:
 Create a cluster on GCP and connect to it
