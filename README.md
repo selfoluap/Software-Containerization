@@ -50,10 +50,10 @@ The output should look like this 35.239.106.62. This IP address will later be us
 Build and push docker images to Container Registry
 ```
 docker build . -t gcr.io/$YOUR_PROJECT_NAME/backend:v1
-docker push gcr.io/$YOUR_PROJECT_NAME/backend:v1
+docker push eu.gcr.io/$YOUR_PROJECT_NAME/backend:v1
 
 docker build . -t gcr.io/$YOUR_PROJECT_NAME/frontend:v1
-docker push gcr.io/$YOUR_PROJECT_NAME/frontend:v1
+docker push eu.gcr.io/$YOUR_PROJECT_NAME/frontend:v1
 ```
 Create TLS Certificate
 We already created the secrets, but with the following command new keys can be created.
