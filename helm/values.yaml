@@ -1,13 +1,16 @@
-replicaCount: 3
-frontendImage: gcr.io/diesel-dominion-375713/frontend:vp3
+replicaCount: 5
+frontendImage: gcr.io/diesel-dominion-375713/frontend:v2
 frontendTargetPort: 80
 frontendPort: 8091
-backendImage: gcr.io/diesel-dominion-375713/backend:vp1
+backendImage: gcr.io/diesel-dominion-375713/backend:v1
 backendTargetPort: 5000
 backendPort: 8081
 dbPort: 5432
 dbURL: postgresql://postgresadmin:admin123@postgres-service.default.svc.cluster.local:5432/postgresdb
-hostName: "<IP>.nip.io"
+dbPW: YWRtaW4xMjMK
+dBName: postgresdb
+dbUser: postgresadmin
+hostName: "34.140.110.63.nip.io"
 roles:
   managers: 
     - g.savchenko@student.vu.nl

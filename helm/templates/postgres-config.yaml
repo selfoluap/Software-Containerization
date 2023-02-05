@@ -5,8 +5,8 @@ metadata:
   labels: 
     app: {{ .Release.Name }}-postgres 
 data: 
-  POSTGRES_DB: postgresdb 
-  POSTGRES_USER: postgresadmin 
+  POSTGRES_DB:  {{ .Values.dBName}}
+  POSTGRES_USER:  {{ .Values.dbUser}}
   POSTGRES_PORT: {{ .Values.dbPort | quote}}
   POSTGRES_HOST: {{ .Release.Name }}-postgres-service
 
