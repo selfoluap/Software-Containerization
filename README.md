@@ -98,7 +98,7 @@ Show and describe the artifacts you created to build the docker images - Max 1 p
 Show and describe the artifacts created to deploy the application to Kubernetes - Max 2 points.
 
 Show how you configured the pre-requisites for the application - Max 5 points
-
+![Kubernetes Architecture](presentation_/architecture.svg)
 Our Load Balancer is managed by Google and is automatically created, when the ingress resource is applied
 We are not using the default gce ingress resource, but the more advanced nginx ingress controller
 
@@ -111,6 +111,8 @@ path to fit with the GCP path.
 
 Our docker images are pushed to Container Registry and are also retrieved from there. Our helm charts are stored in 
 Artifact Registry. Both are services provided by GCP.
+
+![Docker](presentation_/docker_architecture.png)
 
 Certificates: Explain how we create the TLS certificate
 
