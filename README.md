@@ -88,7 +88,7 @@ Check permissions for roles created by RBAC
 ```
 kubectl auth can-i get configmaps --as <gcloud-user-email>
 ```
-
+The cluster setup provides 3 RBAC roles: admin, developer, and devops-engineer.
 
 Changing values in the Chart example: change the replicaCount to 5 in values.yaml and version to 0.1.1 in charts.yaml
 ```
@@ -100,16 +100,16 @@ helm upgrade --install software-containerization -f software-containerization-va
 After a source code change, the application can be rebuilt with the following:
 
 ```
-docker build . -t gcr.io/diesel-dominion-375713/frontend:v2
-docker push gcr.io/diesel-dominion-375713/frontend:v2
-kubectl set image deployment/software-containerization-frontend-deployment software-containerization-frontend-container=gcr.io/diesel-dominion-375713/frontend:v2
+docker build . -t eu.gcr.io/<gloud-project-id>/<deployment>:<version>
+docker push eu.gcr.io/<gloud-project-id>/<deployment>:<version>
+kubectl set image deployment/software-containerization-frontend-deployment software-containerization-frontend-container=eu.gcr.io/<gcloud-project-id>/<deployment>:<version>
 ```
 
 Show how you upgrade the running application in two ways:
 
-deployment rollout (2 points):
+To perform a deployment rollout use:
 
-canary update (2 points):
+To perform a canary update use:
 
 
 To uninstall the application use:
