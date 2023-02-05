@@ -34,4 +34,3 @@ spec:
         - name: {{ .Release.Name }}-postgredb 
           persistentVolumeClaim: 
             claimName: {{ .Release.Name }}-postgres-pv-claim 
-  

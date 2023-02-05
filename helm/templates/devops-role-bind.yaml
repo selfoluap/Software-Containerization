@@ -1,15 +1,12 @@
 {{- range $.Values.roles.devops }}
-kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
 metadata:
   name: devops-role-binding-{{ . }}
   namespace: default
-
 subjects:
-
 - kind: User
   name: {{ . }}
-
 roleRef:
   kind: ClusterRole
   name: {{ $.Release.Name }}-devops-engineer

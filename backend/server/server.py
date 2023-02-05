@@ -9,7 +9,6 @@ load_dotenv(find_dotenv())
 
 db = SQLAlchemy()
 app = Flask(__name__)
-
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URL')
 db.init_app(app)
 cors = CORS(app, origins="*")
