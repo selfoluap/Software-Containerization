@@ -1,0 +1,2 @@
+# exclude for security reasons
+.env

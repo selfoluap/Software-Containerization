@@ -1,11 +1,39 @@
 # Software-Containerization
-App for WS2022 Course Software Containerization at VU
+P3 Project Master Computer Science (VU / UVA)
 
-## Contents:
-- /backend - Flask implementation for the back end of application
-- /frontend - React implementation for the front end of application
-- /helm-charts - Helm files to deploy application on cluster
-- /kubernetes - Services, deployments, secrets, ingress etc.
+## Project structure:
+* `/backend` - Flask implementation for the back end of application
+    * `server/`
+        * `.env` - for local dev
+        * `requirements.txt`
+        * `server.py` - main api and db connection
+        * `.dockerignore` - exclude .env
+        * `Dockerfile`
+* `/frontend` - React implementation for the front end of application
+    * `public/`
+    * `src/`
+    * `frontend-nginx-custon.conf`
+    * `Dockerfile`
+* `/helm-charts` - Helm files to deploy application on cluster
+    * `templates/`
+        * `*.yaml` - chart k8s components
+    * `Chart.yaml` - the chart
+    * `values.yaml` - chart's values
+* `presentation/` - presentation contents
+
+* `/kubernetes` - Services, deployments, secrets, ingress etc.
+
+* `inventory-app`: Main application. Contains all necessary files and configurations for Docker and Kubernetes as shown in the presentation (except Istio).
+  * `inventory-api`
+    * `api-server`: Holds Flask app and the Dockerfile
+    * `*.yaml`: Kubernetes configuration files (manual deployment)
+  * `inventory-db`:
+    * `*.yaml`: Kubernetes configuration files (manual deployment)
+  * `inventory-ui`:
+    * `ui-client`: Holds the AngularJS UI and the Dockerfile
+    * `*.yaml`: Kubernetes configuration files (manual deployment)
+  * `helm`: Helm chart for the entire application.
+  * `gcloud`: Configuration for Google Cloud Platform.
 
 ## Setup:
 Create a cluster on GCP and connect to it
