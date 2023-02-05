@@ -1,14 +1,32 @@
 # Software-Containerization
-App for WS2022 Course Software Containerization at VU
+P3 Project Master Computer Science (VU / UVA)
 
-## Contents:
-- /backend - Flask implementation for the back end of application
-- /frontend - React implementation for the front end of application
-- /helm-charts - Helm files to deploy application on cluster
-- /kubernetes - Services, deployments, secrets, ingress etc.
+## Project structure:
+* `/backend` - Flask implementation for the back end of application
+    * `server/`
+        * `.env` - for local dev
+        * `requirements.txt`
+        * `server.py` - main api and db connection
+        * `.dockerignore` - exclude .env
+        * `Dockerfile`
+* `/frontend` - React implementation for the front end of application
+    * `public/`
+    * `src/`
+    * `frontend-nginx-custon.conf`
+    * `Dockerfile`
+* `/helm-charts` - Helm files to deploy application on cluster
+    * `templates/`
+        * `*.yaml` - chart k8s components
+    * `Chart.yaml` - the chart
+    * `values.yaml` - chart's values
+* `presentation/` - presentation contents
+
+* `/kubernetes` - Services, deployments, secrets, ingress etc.
+
+
 
 ## Setup:
-Create a cluster on GCP and connect to it
+On GCP we use a Standard Mode Regional Cluster. Create a cluster on GCP and connect the shell to it
 ```
 gcloud container clusters get-credentials $CLUSTER_NAME --zone $YOUR_ZONE --project $YOUR_PROJECT_NAME
 ```
@@ -59,7 +77,7 @@ helm install $HELM_CHART oci://us-central1-docker.pkg.dev/$YOUR_PROJECT_NAME/$YO
 ```
 
 
-## Presentation
+## Overview and Comands
 
 ![Kubernetes Architecture](presentation_/architecture.svg)
 
@@ -71,15 +89,15 @@ Check permissions for roles created by RBAC
 kubectl auth can-i get configmaps --as <gcloud-user-email>
 ```
 
-Show how to scale the application horizontally
 
-Change the replicaCount to 5 in values.yaml and version to 0.1.1 in charts.yaml
+Changing values in the Chart example: change the replicaCount to 5 in values.yaml and version to 0.1.1 in charts.yaml
 ```
 helm upgrade software-containerization software-containerization-0.1.1.tgz
+helm upgrade --install software-containerization -f software-containerization-values.yaml software-containerization-0.1.1.tgz --set software-containerization.backend-deployment.replicaCount=5
 ```
 
 
-Show how you re-build the application after a source code change (1 point):
+After a source code change, the application can be rebuilt with the following:
 
 ```
 docker build . -t gcr.io/diesel-dominion-375713/frontend:v2
@@ -94,7 +112,7 @@ deployment rollout (2 points):
 canary update (2 points):
 
 
-Show how to uninstall the application (1 point):
+To uninstall the application use:
 
 ```
     helm uninstall software-containerization
