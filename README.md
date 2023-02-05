@@ -92,7 +92,6 @@ The cluster setup provides 3 RBAC roles: admin, developer, and devops-engineer.
 
 Changing values in the Chart example: change the replicaCount to 5 in values.yaml and version to 0.1.1 in charts.yaml
 ```
-helm upgrade software-containerization software-containerization-0.1.1.tgz
 helm upgrade --install software-containerization -f software-containerization-values.yaml software-containerization-0.1.1.tgz --set software-containerization.backend-deployment.replicaCount=5
 ```
 
