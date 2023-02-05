@@ -61,9 +61,9 @@ helm install $HELM_CHART oci://us-central1-docker.pkg.dev/$YOUR_PROJECT_NAME/$YO
 
 ## Presentation
 
-Architecture:
+![Kubernetes Architecture](presentation_/architecture.svg)
 
-
+![Docker](presentation_/docker_architecture.png)
 
 Check permissions for roles created by RBAC
 
