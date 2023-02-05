@@ -6,12 +6,12 @@ backendImage: gcr.io/diesel-dominion-375713/backend:vp1
 backendTargetPort: 5000
 backendPort: 8081
 dbPort: 5432
-dbURL: postgresql://postgresadmin:admin123@postgres-service.default.svc.cluster.local:5432/postgresdb
 hostName: "35.239.106.62.nip.io"
+dbURL: postgresql://postgresadmin:admin123@postgres-service.default.svc.cluster.local:5432/postgresdb
 roles:
   managers: 
     - g.savchenko@student.vu.nl
   developers:
     - p.liedtke@student.vu.nl
-  devops-engineers:
+  devops:
     - s.mojzis@student.vu.nl

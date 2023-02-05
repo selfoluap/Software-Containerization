@@ -26,6 +26,7 @@ Execute the following commands to install the nginx ingress controller
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 helm install nginx-ingress ingress-nginx/ingress-nginx
+kubectl get deploy
 ```
 
 Wait a few moments while the load balancer gets deployed and then retrieve the EXTERNAL-IP associated with the nginx-ingress service

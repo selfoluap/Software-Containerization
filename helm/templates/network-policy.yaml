@@ -31,23 +31,3 @@ spec:
   policyTypes:
   - Egress
   egress: []
-
----
-
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: {{ .Release.Name }}-deny-egress-policy
-spec:
-  podSelector:
-    matchLabels:
-      app: {{ .Release.Name }}-postgres
-
-  policyTypes:
-  - Egress
-  egress:
-  - ports:
-    - port: {{ .Values.dbPort }}
-      protocol: UDP
-    - port: {{ .Values.dbPort }}
-      protocol: TCP
