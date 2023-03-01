@@ -45,11 +45,11 @@ The output should look like this 35.239.106.62. This IP address will later be us
 
 Build and push docker images to Container Registry
 ```
-docker build . -t gcr.io/$YOUR_PROJECT_NAME/backend:v1
-docker push eu.gcr.io/$YOUR_PROJECT_NAME/backend:v1
+docker build . -t $YOUR_REGION_NAME/$YOUR_PROJECT_NAME/backend:v1
+docker push $YOUR_REGION_NAME/$YOUR_PROJECT_NAME/backend:v1
 
-docker build . -t gcr.io/$YOUR_PROJECT_NAME/frontend:v1
-docker push eu.gcr.io/$YOUR_PROJECT_NAME/frontend:v1
+docker build . -t $YOUR_REGION_NAME/$YOUR_PROJECT_NAME/frontend:v1
+docker push $YOUR_REGION_NAME/$YOUR_PROJECT_NAME/frontend:v1
 ```
 Create TLS Certificate
 We already created the secrets, but with the following command new keys can be created.
@@ -94,8 +94,8 @@ helm upgrade --install software-containerization -f software-containerization-va
 After a source code change, the application can be rebuilt with the following:
 
 ```
-docker build . -t  gcr.io/$YOUR_PROJECT_NAME/backend:v2
-docker push  gcr.io/$YOUR_PROJECT_NAME/backend:v2
+docker build . -t  $YOUR_REGION_NAME/$YOUR_PROJECT_NAME/backend:v2
+docker push  $YOUR_REGION_NAME/$YOUR_PROJECT_NAME/backend:v2
 kubectl set image deployment/software-containerization-frontend-deployment software-containerization-frontend-container=gcr.io/$YOUR_PROJECT_NAME/backend:v2
 ```
 
