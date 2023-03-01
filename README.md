@@ -102,5 +102,5 @@ kubectl set image deployment/software-containerization-frontend-deployment softw
 To uninstall the application use:
 
 ```
-    helm uninstall software-containerization
+helm uninstall software-containerization
 ```
