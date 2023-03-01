@@ -27,9 +27,6 @@ P3 Project Master Computer Science (VU / UVA)
 
 ## Setup:
 On GCP we use a Standard Mode Regional Cluster. Create a cluster on GCP and connect the shell to it
-```
-gcloud container clusters get-credentials $CLUSTER_NAME --zone $YOUR_ZONE --project $YOUR_PROJECT_NAME
-```
 
 Install the nginx ingress controller on GCP
 
@@ -38,7 +35,6 @@ Execute the following commands to install the nginx ingress controller
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 helm install nginx-ingress ingress-nginx/ingress-nginx
-kubectl get deploy
 ```
 
 Wait a few moments while the load balancer gets deployed and then retrieve the EXTERNAL-IP associated with the nginx-ingress service
@@ -67,13 +63,13 @@ Set up Artifact Registry on GCP
 Package the helm chart and push it to Artifact Registry
 ```
 helm package helm
-helm push software-containerization-0.1.0.tgz oci://us-central1-docker.pkg.dev/$YOUR_PROJECT_NAME/$YOUR_ARTIFACT_REPO_NAME
+helm push software-containerization-0.1.0.tgz oci://$YOUR_REGION_NAME-docker.pkg.dev/$YOUR_PROJECT_NAME/$YOUR_ARTIFACT_REPO_NAME
 ```
 
 Install helm chart on GKE
 
 ```
-helm install $HELM_CHART oci://us-central1-docker.pkg.dev/$YOUR_PROJECT_NAME/$YOUR_ARTIFACT_REPO_NAME/$HELM_CHART --version 0.1.0
+helm install oci://YOUR_REGION_NAME-docker.pkg.dev/$YOUR_PROJECT_NAME/$YOUR_ARTIFACT_REPO_NAME/software-containerization-0.1.0
 ```
 
 
@@ -95,26 +91,16 @@ Changing values in the Chart example: change the replicaCount to 5 in values.yam
 helm upgrade --install software-containerization -f software-containerization-values.yaml software-containerization-0.1.1.tgz --set software-containerization.backend-deployment.replicaCount=5
 ```
 
-
 After a source code change, the application can be rebuilt with the following:
 
 ```
-docker build . -t eu.gcr.io/<gloud-project-id>/<deployment>:<version>
-docker push eu.gcr.io/<gloud-project-id>/<deployment>:<version>
-kubectl set image deployment/software-containerization-frontend-deployment software-containerization-frontend-container=eu.gcr.io/<gcloud-project-id>/<deployment>:<version>
+docker build . -t  gcr.io/$YOUR_PROJECT_NAME/backend:v2
+docker push  gcr.io/$YOUR_PROJECT_NAME/backend:v2
+kubectl set image deployment/software-containerization-frontend-deployment software-containerization-frontend-container=gcr.io/$YOUR_PROJECT_NAME/backend:v2
 ```
-
-Show how you upgrade the running application in two ways:
-
-To perform a deployment rollout use:
-
-To perform a canary update use:
-
 
 To uninstall the application use:
 
 ```
     helm uninstall software-containerization
-    kubectl get all -n default
 ```
-
